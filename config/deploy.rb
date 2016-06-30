@@ -2,17 +2,17 @@
 lock '3.5.0'
 
 set :application, 'contactbook'
-set :repository, 'git@github.com:SaavedraCesar/contactbook.git'
+set :repo_url, 'git@github.com:SaavedraCesar/contactbook.git'
 
 # Default branch is :master
-set :branch, "master"
+#set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name
- set :deploy_to, '/u/apps/#{ application }'
-
+set :deploy_to, '/Desktop/Ruby/contactbook$'
+set :rails_env, "production"
 # Default value for :scm is :git
- set :scm, :git
-
+ #set :scm, :git
+set :log_level, :info
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
@@ -33,8 +33,8 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :user,"SaavedraCesar"
-set :use_suda, false
+set :rbenv_type, :user
+set :use_sudo, false
 set :deploy_via, : copy
 set :ssh_options, { :forward_agent => true, :port => 4321}
 
