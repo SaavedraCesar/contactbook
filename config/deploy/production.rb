@@ -17,8 +17,8 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
- role :app, %w{ubuntu@heroku.com}, 
- role :web, %w{ubuntu@heroku.com}, 
+ role :app, %w{ubuntu@heroku.com}
+ role :web, %w{ubuntu@heroku.com}
  role :db,  %w{ubuntu@heroku.com}
 
 server 'heroku.com', user: 'ubuntu', roles: %w{web app db},
