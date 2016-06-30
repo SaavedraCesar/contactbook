@@ -22,7 +22,7 @@
  role :db,  %w{ubuntu@heroku.com}
 
 server 'heroku.com', user: 'ubuntu', roles: %w{web app db},
-my_property: my_value
+my_property: :my_value
 set :rails_env,"production"
 set :branch ,"master"
 # Configuration
