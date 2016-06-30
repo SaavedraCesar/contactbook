@@ -34,16 +34,12 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for keep_releases is 5
 set :rbenv_type, :user
-set :use_sudo, false
-set :deploy_via, : copy
-set :ssh_options, { :forward_agent => true, :port => 4321}
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all
+
 
 set :keep_releases, 5
-set :rvm_type, :user
-set :rvm_ruby_version, 'jruby-1.7.19'
-
-default_run_options[:pty] = true
-server "www.heroku.com", :app, :web, :db, :primary => true
 
 #cap deploy:setup
 #cap deploy:check
