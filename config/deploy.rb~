@@ -34,7 +34,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for keep_releases is 5
 set :user,"SaavedraCesar"
-set :scm_passphrase, "saavedra600"
 set :use_suda, false
 set :deploy_via, : copy
 set :ssh_options, { :forward_agent => true, :port => 4321}
@@ -44,9 +43,13 @@ set :rvm_type, :user
 set :rvm_ruby_version, 'jruby-1.7.19'
 
 default_run_options[:pty] = true
-server "www.heroku.com", :app, :web, :db, :primary => true
-cap deploy:setup
-cap deploy:check
+
+
+#cap deploy:setup
+#cap deploy:check
+#cap deploy:migrate
+#cap deploy:rollback
+#cap deploy:update_code
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
