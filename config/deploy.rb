@@ -2,16 +2,16 @@
 lock '3.5.0'
 
 set :application, 'contactbook'
-set :repo_url, 'git@github_devdatta/Contactbook.git'
+set :repository, 'git@github.com:SaavedraCesar/contactbook.git'
 
 # Default branch is :master
-set :branch, :master
+set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name
- set :deploy_to, '/home/deploy/contactbook'
+ set :deploy_to, '/u/apps/#{ application }'
 
 # Default value for :scm is :git
-# set :scm, :git
+ set :scm, :git
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -33,9 +33,22 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
+set :user,"SaavedraCesar"
+set :scm_passphrase, "saavedra600"
+set :use_suda, false
+set :deploy_via, : copy
+set :ssh_options, { :forward_agent => true, :port => 4321}
+
 set :keep_releases, 5
 set :rvm_type, :user
 set :rvm_ruby_version, 'jruby-1.7.19'
+
+default_run_options[:pty] = true
+server "www.heroku.com", :app, :web, :db, :primary => true
+cap deploy:setup
+cap deploy:check
+cap deploy:migrate
+cap deploy:rollback
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
